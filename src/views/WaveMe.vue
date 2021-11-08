@@ -39,7 +39,7 @@
         {{ trxInProgress ? `Sending...` : `Send message 👋` }}
       </button>
     </div>
-    <p class="mt-4 font-bold">All messages</p>
+    <p class="mt-4 font-bold">All messages 📩</p>
     <ul class="flex flex-col max-w-md my-8 mx-auto">
       <li
         class="p-4 border mt-2 rounded-lg"
