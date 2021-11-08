@@ -28,7 +28,7 @@
 
       <button
         @click="sendMessage"
-        :disabled="walletStore.walletData == null"
+        :disabled="walletStore.walletData == null || trxInProgress"
         class="px-4 py-2 mt-8 border font-medium rounded"
         :class="
           walletStore.walletData == null
@@ -36,7 +36,7 @@
             : 'border-pink-500 text-pink-600 hover:shadow-lg shadow-sm'
         "
       >
-        Send message 👋
+        {{ trxInProgress ? `Sending...` : `Send message 👋` }}
       </button>
     </div>
     <p class="mt-4 font-bold">All messages</p>
@@ -79,6 +79,7 @@ export default defineComponent({
     const message = ref('')
     const totalWaves = ref(0)
     const allMessages = ref([])
+    const trxInProgress = ref(false)
 
     const getTotalWaves = async function () {
       //@ts-expect-error Window.ethers not TS
@@ -133,6 +134,7 @@ export default defineComponent({
     const sendMessage = async function () {
       //@ts-expect-error Window.ethers not TS
       if (typeof window.ethereum !== 'undefined') {
+        trxInProgress.value = true
         //@ts-expect-error Window.ethers not TS
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         // get the account that will pay for the trasaction
@@ -151,12 +153,14 @@ export default defineComponent({
           // wait for the transaction to actually settle in the blockchain
           await transaction.wait()
           message.value = ''
+          trxInProgress.value = false
           //@ts-expect-error because why not
           this.getTotalWaves()
           //@ts-expect-error because why not
           this.getAllWaves()
         } catch (error) {
           console.error(error)
+          trxInProgress.value = false
         }
       }
     }
@@ -166,6 +170,7 @@ export default defineComponent({
       totalWaves,
       allMessages,
       walletStore,
+      trxInProgress,
       sendMessage,
       getAllWaves,
       getTotalWaves,

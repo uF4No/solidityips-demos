@@ -8,7 +8,7 @@
     "serve": "vue-cli-service serve",
     "contracts": "npx hardhat run ./solidity/scripts/run.js",
     "deploy": "npx hardhat run ./solidity/scripts/deploy.js --network localhost",
-    "deploy:rikeby": "npx hardhat run ./solidity/scripts/deploy.js --network rinkeby",
+    "deploy:rinkeby": "npx hardhat run ./solidity/scripts/deploy.js --network rinkeby",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1"
