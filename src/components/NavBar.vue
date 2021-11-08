@@ -278,7 +278,7 @@ export default defineComponent({
 
     const connectWallet = async () => {
       try {
-        // @ts-expect-error
+        // @ts-expect-error Window.ethereum not typed
         const data = await window.ethereum.request({
           method: 'eth_requestAccounts',
         })
