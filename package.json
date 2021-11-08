@@ -1,5 +1,5 @@
 {
-  "name": "wavePortal",
+  "name": "soliditytips-demos",
   "version": "1.0.0",
   "private": true,
   "description": "",
@@ -39,7 +39,7 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
     "typescript": "~4.1.5"
   },
-  "_id": "wavePortal@1.0.0",
+  "_id": "solidititips-demos@1.0.0",
   "keywords": [],
   "license": "ISC",
   "readme": "ERROR: No README data found!"

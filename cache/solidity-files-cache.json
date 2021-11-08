@@ -1,7 +1,44 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/antonio/Projects/BuildSpace/wavePortal/node_modules/hardhat/console.sol": {
+    "/Users/antonio/Projects/BuildSpace/wave-portal/solidity/contracts/WavePortal.sol": {
+      "lastModificationDate": 1636370596098,
+      "contentHash": "c1469a21243012c3b406b35686999aea",
+      "sourceName": "solidity/contracts/WavePortal.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "hardhat/console.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "WavePortal"
+      ]
+    },
+    "/Users/antonio/Projects/BuildSpace/wave-portal/node_modules/hardhat/console.sol": {
       "lastModificationDate": 1636229177841,
       "contentHash": "cc4777addd464ea56fa35b1c45df0591",
       "sourceName": "hardhat/console.sol",
@@ -34,43 +71,6 @@
       ],
       "artifacts": [
         "console"
-      ]
-    },
-    "/Users/antonio/Projects/BuildSpace/wavePortal/contracts/WavePortal.sol": {
-      "lastModificationDate": 1636279216691,
-      "contentHash": "348e9af6da23672cfbf6ad370bee8249",
-      "sourceName": "contracts/WavePortal.sol",
-      "solcConfig": {
-        "version": "0.8.4",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "hardhat/console.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.4"
-      ],
-      "artifacts": [
-        "WavePortal"
       ]
     }
   }

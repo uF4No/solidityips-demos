@@ -3,24 +3,12 @@
     <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" /> -->
     <h1 class="text-5xl font-bold my-8 max-w-xl mx-auto">
-      Hey! This is a blockchain demo app!
+      Hey! This is a blockchain demos portal!
     </h1>
-    <h2 class="text-xl">Send a wave and it'll be stored in the blockchain!</h2>
-    <button
-      class="
-        px-4
-        py-2
-        mt-8
-        border border-pink-500
-        text-pink-600
-        font-medium
-        rounded
-        hover:shadow-lg
-        shadow-sm shadow-pink
-      "
-    >
-      Send wave 👋
-    </button>
+    <h2 class="text-xl">
+      Choose one of the options from the menu to see different blockchain
+      applications in action!
+    </h2>
   </div>
 </template>
 

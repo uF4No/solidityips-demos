@@ -1,6 +1,6 @@
 <template>
   <!-- This example requires Tailwind CSS v2.0+ -->
-  <nav class="bg-gray-800">
+  <nav class="bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex">
@@ -74,19 +74,19 @@
           <div class="flex-shrink-0 flex items-center">
             <img
               class="block lg:hidden h-8 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-              alt="Workflow"
+              src="https://soliditytips.com/terminal-icon.png"
+              alt="SolidityTips.com logo"
             />
             <img
               class="hidden lg:block h-8 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-              alt="Workflow"
+              src="https://soliditytips.com/terminal-icon.png"
+              alt="SolidityTips.com logo"
             />
           </div>
           <div class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <router-link
-              to="/"
+              :to="{ name: 'Home' }"
               class="
                 bg-gray-900
                 text-white
@@ -100,8 +100,8 @@
               >Home</router-link
             >
 
-            <a
-              href="#"
+            <router-link
+              :to="{ name: 'WaveMe' }"
               class="
                 text-gray-300
                 hover:bg-gray-700 hover:text-white
@@ -111,10 +111,10 @@
                 text-sm
                 font-medium
               "
-              >Team</a
+              >Wave Me</router-link
             >
 
-            <a
+            <!-- <a
               href="#"
               class="
                 text-gray-300
@@ -126,9 +126,9 @@
                 font-medium
               "
               >Projects</a
-            >
+            > -->
 
-            <a
+            <!-- <a
               href="#"
               class="
                 text-gray-300
@@ -140,7 +140,7 @@
                 font-medium
               "
               >Calendar</a
-            >
+            > -->
           </div>
         </div>
         <div class="flex items-center">
@@ -202,8 +202,8 @@
     <div class="md:hidden" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a
-          href="#"
+        <router-link
+          :to="{ name: 'Home' }"
           class="
             bg-gray-900
             text-white
@@ -215,11 +215,11 @@
             font-medium
           "
           aria-current="page"
-          >Dashboard</a
+          >Home</router-link
         >
 
-        <a
-          href="#"
+        <router-link
+          :to="{ name: 'WaveMe' }"
           class="
             text-gray-300
             hover:bg-gray-700 hover:text-white
@@ -230,10 +230,10 @@
             text-base
             font-medium
           "
-          >Team</a
+          >Wave me</router-link
         >
 
-        <a
+        <!-- <a
           href="#"
           class="
             text-gray-300
@@ -246,9 +246,9 @@
             font-medium
           "
           >Projects</a
-        >
+        > -->
 
-        <a
+        <!-- <a
           href="#"
           class="
             text-gray-300
@@ -261,7 +261,7 @@
             font-medium
           "
           >Calendar</a
-        >
+        > -->
       </div>
     </div>
   </nav>
