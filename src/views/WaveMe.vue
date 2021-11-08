@@ -107,6 +107,8 @@ export default defineComponent({
     }
 
     const getAllWaves = async function () {
+      allMessages.value = []
+
       //@ts-expect-error Window.ethers not TS
       if (typeof window.ethereum !== 'undefined') {
         //@ts-expect-error Window.ethers not TS
@@ -159,10 +161,11 @@ export default defineComponent({
           await transaction.wait()
           message.value = ''
           trxInProgress.value = false
-          //@ts-expect-error because why not
-          this.getTotalWaves()
+
           //@ts-expect-error because why not
           this.getAllWaves()
+          //@ts-expect-error because why not
+          this.getTotalWaves()
         } catch (error) {
           console.error(error)
           trxInProgress.value = false
