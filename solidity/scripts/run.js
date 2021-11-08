@@ -28,6 +28,10 @@ const main = async () => {
   await waveTxn.wait()
 
   waveCount = await waveContract.getTotalWaves()
+
+  const allWaves = (waveCount = await waveContract.getAllWaves())
+
+  console.log('allWaves :>> ', allWaves)
 }
 
 const runMain = async () => {

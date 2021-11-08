@@ -7,6 +7,8 @@ import "hardhat/console.sol";
 contract WavePortal {
     uint256 totalWaves;
 
+    event NewWave(address indexed from, uint256 timestamp, string message);
+
     mapping(address => uint256) wavesPerUser;
     struct Message {
         string text;
@@ -30,15 +32,18 @@ contract WavePortal {
             msg.sender,
             wavesPerUser[msg.sender]
         );
-        Message memory newMessage = Message(
-            _newMessage,
-            msg.sender,
-            block.timestamp
-        );
 
-        allMessages.push(newMessage);
+        // saves message in array
+        allMessages.push(Message(_newMessage, msg.sender, block.timestamp));
+
+        // emit event for web app
+        emit NewWave(msg.sender, block.timestamp, _newMessage);
 
         console.log("AllMessages updated");
+    }
+
+    function getAllWaves() public view returns (Message[] memory) {
+        return allMessages;
     }
 
     function getTotalWaves() public view returns (uint256) {

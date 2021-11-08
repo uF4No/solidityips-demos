@@ -30,9 +30,9 @@ module.exports = {
       chainId: 5777,
       url: 'http://127.0.0.1:7545',
     },
-    rinkeby: {
-      url: 'ALCHEMY_API_KEY',
-      accounts: ['ACC_PRIVTE_KEY'],
-    },
+    // rinkeby: {
+    //   url: 'ALCHEMY_API_KEY',
+    //   accounts: ['ACC_PRIVTE_KEY'],
+    // },
   },
 }

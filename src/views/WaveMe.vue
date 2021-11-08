@@ -39,6 +39,26 @@
         Send message 👋
       </button>
     </div>
+    <p class="mt-4 font-bold">All messages</p>
+    <ul class="flex flex-col max-w-md my-8 mx-auto">
+      <li
+        class="p-4 border mt-2 rounded-lg"
+        v-for="msg in allMessages"
+        :key="msg"
+      >
+        <div class="text-left">
+          <p>
+            <span class="font-bold"
+              >{{ msg.from.slice(0, 2) }}...{{ msg.from.slice(-4) }}</span
+            >
+            said:
+          </p>
+          <blockquote class="italic">{{ msg.text }}</blockquote>
+        </div>
+        <p class="text-sm mt-4 text-right">posted on {{ msg.datetime }}</p>
+        <p></p>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -52,17 +72,13 @@ import WavePortal from '@/artifacts/solidity/contracts/WavePortal.sol/WavePortal
 export default defineComponent({
   name: 'WaveMe',
   components: {},
-  mounted() {
-    if (this.walletStore.walletData !== null) {
-      console.log('There is a wallet connected!')
-      this.getTotalWaves()
-    }
-  },
+
   setup() {
     const walletStore = useWalletStore()
     const contractAddress = process.env.VUE_APP_ADDRESS_WAVE || ''
     const message = ref('')
     const totalWaves = ref(0)
+    const allMessages = ref([])
 
     const getTotalWaves = async function () {
       //@ts-expect-error Window.ethers not TS
@@ -78,6 +94,36 @@ export default defineComponent({
           const data = await contract.getTotalWaves()
           console.log('totalWaves :>> ', data)
           totalWaves.value = data
+        } catch (error) {
+          console.error(error)
+        }
+      }
+    }
+
+    const getAllWaves = async function () {
+      //@ts-expect-error Window.ethers not TS
+      if (typeof window.ethereum !== 'undefined') {
+        //@ts-expect-error Window.ethers not TS
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const contract = new ethers.Contract(
+          contractAddress,
+          WavePortal.abi,
+          provider
+        )
+        try {
+          const data = await contract.getAllWaves()
+          console.log('allWaves :>> ', data)
+          data.forEach((wave: any) => {
+            allMessages.value.push({
+              //@ts-expect-error Window.ethers not TS
+              from: wave.from,
+              //@ts-expect-error Window.ethers not TS
+              text: wave.text,
+              //@ts-expect-error Window.ethers not TS
+              datetime: new Date(wave.datetime * 1000),
+            })
+          })
+          // allMessages.value = data
         } catch (error) {
           console.error(error)
         }
@@ -107,6 +153,8 @@ export default defineComponent({
           message.value = ''
           //@ts-expect-error because why not
           this.getTotalWaves()
+          //@ts-expect-error because why not
+          this.getAllWaves()
         } catch (error) {
           console.error(error)
         }
@@ -116,9 +164,18 @@ export default defineComponent({
     return {
       message,
       totalWaves,
+      allMessages,
       walletStore,
       sendMessage,
+      getAllWaves,
       getTotalWaves,
+    }
+  },
+  mounted() {
+    if (this.walletStore.walletData !== null) {
+      console.log('There is a wallet connected!')
+      this.getTotalWaves()
+      this.getAllWaves()
     }
   },
   computed: {
@@ -130,6 +187,7 @@ export default defineComponent({
     accAvailable(newVal, old) {
       console.log(`updating from ${old} to ${newVal}`)
       this.getTotalWaves()
+      this.getAllWaves()
     },
   },
 })
