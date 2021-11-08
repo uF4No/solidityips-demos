@@ -1,11 +1,10 @@
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" /> -->
     <h1 class="text-5xl font-bold my-8 max-w-xl mx-auto">Send a message 👋</h1>
     <h2 class="text-xl">
       Send a message and it'll be stored in the blockchain!
     </h2>
+    <p class="my-8">People have sent {{ totalWaves }} messages so far</p>
     <div class="flex flex-col max-w-md mx-auto space-y-4 mt-8">
       <textarea
         v-model="message"
@@ -50,14 +49,39 @@ import { ethers } from 'ethers'
 import WavePortal from '@/artifacts/solidity/contracts/WavePortal.sol/WavePortal.json'
 
 export default defineComponent({
-  name: 'Home',
-  components: {
-    // HelloWorld,
+  name: 'WaveMe',
+  components: {},
+  mounted() {
+    if (this.walletStore.walletData !== null) {
+      console.log('There is a wallet connected!')
+      this.getTotalWaves()
+    }
   },
   setup() {
     const walletStore = useWalletStore()
     const contractAddress = process.env.VUE_APP_ADDRESS_WAVE || ''
     const message = ref('')
+    const totalWaves = ref(0)
+
+    const getTotalWaves = async function () {
+      //@ts-expect-error Window.ethers not TS
+      if (typeof window.ethereum !== 'undefined') {
+        //@ts-expect-error Window.ethers not TS
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        const contract = new ethers.Contract(
+          contractAddress,
+          WavePortal.abi,
+          provider
+        )
+        try {
+          const data = await contract.getTotalWaves()
+          console.log('totalWaves :>> ', data)
+          totalWaves.value = data
+        } catch (error) {
+          console.error(error)
+        }
+      }
+    }
 
     const sendMessage = async function () {
       //@ts-expect-error Window.ethers not TS
@@ -88,9 +112,22 @@ export default defineComponent({
 
     return {
       message,
+      totalWaves,
       walletStore,
       sendMessage,
+      getTotalWaves,
     }
+  },
+  computed: {
+    accAvailable() {
+      return useWalletStore().walletData
+    },
+  },
+  watch: {
+    accAvailable(newVal, old) {
+      console.log(`updating from ${old} to ${newVal}`)
+      this.getTotalWaves()
+    },
   },
 })
 </script>
