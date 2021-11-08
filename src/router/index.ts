@@ -8,7 +8,7 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
   },
   {
-    path: '/',
+    path: '/wave-me',
     name: 'WaveMe',
     component: () =>
       import(/* webpackChunkName: "wave" */ '../views/WaveMe.vue'),
@@ -22,10 +22,18 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
+
+  // TODO: for 404 errors
+  // {
+  //   path: '/:catchAll(.*)',
+  //   component: NotFoundComponent,
+  //   name: 'NotFound',
+  // },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
+
   routes,
 })
 
