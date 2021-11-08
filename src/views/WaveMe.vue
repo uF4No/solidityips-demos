@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <h1 class="text-5xl font-bold my-8 max-w-xl mx-auto">Send a message 👋</h1>
+    <h1 class="text-5xl font-bold mt-12 mb-8 max-w-xl mx-auto">
+      Send a message 👋
+    </h1>
     <h2 class="text-xl">
       Send a message and it'll be stored in the blockchain!
     </h2>
@@ -11,6 +13,9 @@
     </p>
     <p v-else class="my-8 text-red-500 font-medium">
       You have to connect your wallet first!
+    </p>
+    <p class="my-4 font-medium">
+      Note: This app works using the Rinkeby blockchain
     </p>
     <div class="flex flex-col max-w-md mx-auto space-y-4 mt-8">
       <textarea
