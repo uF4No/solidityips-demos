@@ -4,29 +4,30 @@
     <h2 class="text-xl">
       Send a message and it'll be stored in the blockchain!
     </h2>
-    <p class="my-8">People have sent {{ totalWaves }} messages so far</p>
+    <p class="my-8" v-if="walletStore.walletData != null">
+      People have sent
+      <span class="text-indigo-500 font-bold">{{ totalWaves }}</span> messages
+      so far
+    </p>
+    <p v-else class="my-8 text-red-500 font-medium">
+      You have to connect your wallet first!
+    </p>
     <div class="flex flex-col max-w-md mx-auto space-y-4 mt-8">
       <textarea
         v-model="message"
-        name=""
-        id=""
+        :disabled="walletStore.walletData == null"
         cols="30"
         rows="5"
-        class="
-          border border-pink-500
-          focus:border-pink-500
-          ring-none
-          text-pink-600
-          font-medium
-          rounded
-          p-2
+        class="border ring-none text-pink-600 font-medium rounded p-2"
+        :class="
+          walletStore.walletData == null
+            ? 'border-gray-200 text-gray-400'
+            : 'border-pink-500 text-pink-600 hover:shadow-lg shadow-sm'
         "
       ></textarea>
-      <p v-if="walletStore.walletData == null" class="text-red-500 font-medium">
-        You have to connect your wallet!
-      </p>
+
       <button
-        @click.once="sendMessage"
+        @click="sendMessage"
         :disabled="walletStore.walletData == null"
         class="px-4 py-2 mt-8 border font-medium rounded"
         :class="
@@ -104,6 +105,8 @@ export default defineComponent({
           // wait for the transaction to actually settle in the blockchain
           await transaction.wait()
           message.value = ''
+          //@ts-expect-error because why not
+          this.getTotalWaves()
         } catch (error) {
           console.error(error)
         }
