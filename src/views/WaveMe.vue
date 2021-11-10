@@ -184,7 +184,7 @@ export default defineComponent({
       totalWaves,
       allMessages,
       walletStore,
-
+      trxInProgress,
       sendMessage,
       getAllWaves,
       getTotalWaves,
