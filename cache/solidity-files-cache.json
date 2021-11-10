@@ -74,8 +74,8 @@
       ]
     },
     "/Users/antonio/Projects/BuildSpace/wave-portal/solidity/contracts/LuckyNumber.sol": {
-      "lastModificationDate": 1636557541982,
-      "contentHash": "92557eb3307b78c7f7bedf52762e9170",
+      "lastModificationDate": 1636559907864,
+      "contentHash": "d086ea2fe65de7c5c75b057231f6a62d",
       "sourceName": "solidity/contracts/LuckyNumber.sol",
       "solcConfig": {
         "version": "0.8.4",

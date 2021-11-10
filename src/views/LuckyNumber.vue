@@ -40,7 +40,8 @@
       <span>{{ isWinner ? `You've won 🎉!!!` : 'Ohh! Try again ' }}</span>
     </p>
     <p v-if="latestNumbers.length > 0">
-      The last 5 numbers played are: {{ latestNumbers.slice(-5) }}
+      Psst! the last numbers played are: {{ latestNumbers.slice(-5) }} so don't
+      try any of those 😉
     </p>
     <button
       @click="playLottery"

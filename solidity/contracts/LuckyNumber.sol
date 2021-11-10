@@ -67,6 +67,8 @@ contract LuckyNumber {
 
             console.log("Balance after win is ", address(this).balance);
             console.log("The secret number is %s", secretNumber);
+            // reset latestNumbers
+            delete latestNumbers;
         }
         latestNumbers.push(_number);
     }
