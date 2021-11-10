@@ -36,7 +36,7 @@ contract LuckyNumber {
     }
 
     function getPrize() public view returns (uint256) {
-        return address(this).balance;
+        return (address(this).balance * 80) / 100;
     }
 
     function getLatestNumbers() public view returns (uint256[] memory) {
