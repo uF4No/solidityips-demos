@@ -110,7 +110,7 @@ export default defineComponent({
       latestNumbers.value = []
 
       try {
-        const data = await contract.getLatestNumbers()
+        const data = await contract.getLatestNumbers({ gasLimit: 300000 })
         console.log('latest numbers :>> ', data)
         data.forEach((number: number) => {
           //@ts-expect-error because why not
@@ -128,7 +128,7 @@ export default defineComponent({
 
     const getCurrentPrize = async function () {
       try {
-        const data = await contract.getPrize()
+        const data = await contract.getPrize({ gasLimit: 300000 })
         console.log('currentPrize :>> ', data)
         //@ts-expect-error because why not
         currentPrize.value = ethers.utils.formatEther(data)
@@ -162,6 +162,7 @@ export default defineComponent({
           value: ethers.utils.parseEther('0.0001'),
           // nonce: provider.getTransactionCount(this.userAddress, 'latest'),
           // gasLimit: ethers.utils.hexlify(gasPrice),
+          gasLimit: 300000,
           // gasPrice: gasPrice,
         }
         const transaction = await contract.playLottery(
