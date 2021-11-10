@@ -110,7 +110,13 @@ export default defineComponent({
       latestNumbers.value = []
 
       try {
-        const data = await contract.getLatestNumbers({ gasLimit: 300000 })
+        //@ts-expect-error because why not
+        const gasPrice = await provider.getGasPrice()
+        console.log('gasPrice :>> ', gasPrice.toNumber())
+        const data = await contract.getLatestNumbers({
+          gasLimit: ethers.utils.hexlify(gasPrice),
+          gasPrice: gasPrice,
+        })
         console.log('latest numbers :>> ', data)
         data.forEach((number: number) => {
           //@ts-expect-error because why not
@@ -128,7 +134,13 @@ export default defineComponent({
 
     const getCurrentPrize = async function () {
       try {
-        const data = await contract.getPrize({ gasLimit: 300000 })
+        //@ts-expect-error because why not
+        const gasPrice = await provider.getGasPrice()
+        console.log('gasPrice :>> ', gasPrice.toNumber())
+        const data = await contract.getPrize({
+          gasLimit: ethers.utils.hexlify(gasPrice),
+          gasPrice: gasPrice,
+        })
         console.log('currentPrize :>> ', data)
         //@ts-expect-error because why not
         currentPrize.value = ethers.utils.formatEther(data)
@@ -156,14 +168,16 @@ export default defineComponent({
         signer
       )
       try {
+        //@ts-expect-error because why not
+        const gasPrice = await provider.getGasPrice()
+        console.log('gasPrice :>> ', gasPrice.toNumber())
         const txOverrides = {
           // from: this.userAddress,
           // to: this.escrowAddress,
           value: ethers.utils.parseEther('0.0001'),
           // nonce: provider.getTransactionCount(this.userAddress, 'latest'),
-          // gasLimit: ethers.utils.hexlify(gasPrice),
-          gasLimit: 300000,
-          // gasPrice: gasPrice,
+          gasLimit: ethers.utils.hexlify(gasPrice),
+          gasPrice: gasPrice,
         }
         const transaction = await contract.playLottery(
           number.value,
