@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/antonio/Projects/BuildSpace/wave-portal/solidity/contracts/WavePortal.sol": {
-      "lastModificationDate": 1636544284751,
-      "contentHash": "dd1223e55620a87346dbf5392b66bf19",
+      "lastModificationDate": 1636557511220,
+      "contentHash": "4b9b9d29a841bd22bdca8d97a76b13f8",
       "sourceName": "solidity/contracts/WavePortal.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -71,6 +71,43 @@
       ],
       "artifacts": [
         "console"
+      ]
+    },
+    "/Users/antonio/Projects/BuildSpace/wave-portal/solidity/contracts/LuckyNumber.sol": {
+      "lastModificationDate": 1636557541982,
+      "contentHash": "92557eb3307b78c7f7bedf52762e9170",
+      "sourceName": "solidity/contracts/LuckyNumber.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "hardhat/console.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "LuckyNumber"
       ]
     }
   }

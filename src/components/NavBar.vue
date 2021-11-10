@@ -114,6 +114,20 @@
               >Wave Me</router-link
             >
 
+            <router-link
+              :to="{ name: 'LuckyNumber' }"
+              class="
+                text-gray-300
+                hover:bg-gray-700 hover:text-white
+                px-3
+                py-2
+                rounded-md
+                text-sm
+                font-medium
+              "
+              >Lucky number</router-link
+            >
+
             <!-- <a
               href="#"
               class="
@@ -231,6 +245,21 @@
             font-medium
           "
           >Wave me</router-link
+        >
+
+        <router-link
+          :to="{ name: 'WaveMe' }"
+          class="
+            text-gray-300
+            hover:bg-gray-700 hover:text-white
+            block
+            px-3
+            py-2
+            rounded-md
+            text-base
+            font-medium
+          "
+          >Lucky number</router-link
         >
 
         <!-- <a
