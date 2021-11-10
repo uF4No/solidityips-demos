@@ -197,9 +197,10 @@ export default defineComponent({
       showAlert,
     }
   },
-  mounted() {
+  async mounted() {
     if (this.walletStore.walletData !== null) {
       console.log('There is a wallet connected!')
+      await this.connect()
 
       this.getCurrentPrize()
       this.getLatestNumbers()
