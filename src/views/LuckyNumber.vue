@@ -176,7 +176,7 @@ export default defineComponent({
           // to: this.escrowAddress,
           value: ethers.utils.parseEther('0.0001'),
           // nonce: provider.getTransactionCount(this.userAddress, 'latest'),
-          // gasLimit: ethers.utils.hexlify(gasPrice),
+          gasLimit: 300000,
           // gasPrice: gasPrice,
         }
         const transaction = await contract.playLottery(

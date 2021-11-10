@@ -160,7 +160,9 @@ export default defineComponent({
           signer
         )
         try {
-          const transaction = await contract.sendWave(message.value, {})
+          const transaction = await contract.sendWave(message.value, {
+            gasLimit: 300000,
+          })
 
           console.log('transaction :>> ', transaction)
           // wait for the transaction to actually settle in the blockchain
