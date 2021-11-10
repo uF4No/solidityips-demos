@@ -106,9 +106,7 @@ export default defineComponent({
           provider
         )
         try {
-          const data = await contract.getTotalWaves({
-            gasLimit: 300000,
-          })
+          const data = await contract.getTotalWaves({})
           console.log('totalWaves :>> ', data)
           totalWaves.value = data
         } catch (error) {
@@ -130,9 +128,7 @@ export default defineComponent({
           provider
         )
         try {
-          const data = await contract.getAllWaves({
-            gasLimit: 300000,
-          })
+          const data = await contract.getAllWaves({})
           console.log('allWaves :>> ', data)
           data.forEach((wave: any) => {
             allMessages.value.push({
@@ -164,9 +160,7 @@ export default defineComponent({
           signer
         )
         try {
-          const transaction = await contract.sendWave(message.value, {
-            gasLimit: 300000,
-          })
+          const transaction = await contract.sendWave(message.value, {})
 
           console.log('transaction :>> ', transaction)
           // wait for the transaction to actually settle in the blockchain
