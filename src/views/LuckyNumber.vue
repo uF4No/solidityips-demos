@@ -115,7 +115,7 @@ export default defineComponent({
         console.log('gasPrice :>> ', gasPrice.toNumber())
         const data = await contract.getLatestNumbers({
           gasLimit: ethers.utils.hexlify(gasPrice),
-          gasPrice: gasPrice,
+          // gasPrice: gasPrice,
         })
         console.log('latest numbers :>> ', data)
         data.forEach((number: number) => {
@@ -139,7 +139,7 @@ export default defineComponent({
         console.log('gasPrice :>> ', gasPrice.toNumber())
         const data = await contract.getPrize({
           gasLimit: ethers.utils.hexlify(gasPrice),
-          gasPrice: gasPrice,
+          // gasPrice: gasPrice,
         })
         console.log('currentPrize :>> ', data)
         //@ts-expect-error because why not
@@ -177,7 +177,7 @@ export default defineComponent({
           value: ethers.utils.parseEther('0.0001'),
           // nonce: provider.getTransactionCount(this.userAddress, 'latest'),
           gasLimit: ethers.utils.hexlify(gasPrice),
-          gasPrice: gasPrice,
+          // gasPrice: gasPrice,
         }
         const transaction = await contract.playLottery(
           number.value,
