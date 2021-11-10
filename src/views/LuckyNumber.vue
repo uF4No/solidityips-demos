@@ -114,7 +114,7 @@ export default defineComponent({
         const gasPrice = await provider.getGasPrice()
         console.log('gasPrice :>> ', gasPrice.toNumber())
         const data = await contract.getLatestNumbers({
-          gasLimit: ethers.utils.hexlify(gasPrice),
+          // gasLimit: ethers.utils.hexlify(gasPrice),
           // gasPrice: gasPrice,
         })
         console.log('latest numbers :>> ', data)
@@ -138,7 +138,7 @@ export default defineComponent({
         const gasPrice = await provider.getGasPrice()
         console.log('gasPrice :>> ', gasPrice.toNumber())
         const data = await contract.getPrize({
-          gasLimit: ethers.utils.hexlify(gasPrice),
+          // gasLimit: ethers.utils.hexlify(gasPrice),
           // gasPrice: gasPrice,
         })
         console.log('currentPrize :>> ', data)
@@ -176,7 +176,7 @@ export default defineComponent({
           // to: this.escrowAddress,
           value: ethers.utils.parseEther('0.0001'),
           // nonce: provider.getTransactionCount(this.userAddress, 'latest'),
-          gasLimit: ethers.utils.hexlify(gasPrice),
+          // gasLimit: ethers.utils.hexlify(gasPrice),
           // gasPrice: gasPrice,
         }
         const transaction = await contract.playLottery(
