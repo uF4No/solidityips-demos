@@ -6,6 +6,7 @@
     <div class="py-8 border-t bg-gray-200 font-medium">
       <router-link to="/">Home</router-link> |
       <router-link :to="{ name: 'WaveMe' }">Wave me 👋</router-link> |
+      <router-link :to="{ name: 'WaveMe' }">Lucky number 🎲</router-link> |
 
       <router-link :to="{ name: 'About' }">About</router-link>
     </div>
