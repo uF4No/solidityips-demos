@@ -25,13 +25,7 @@
               aria-expanded="false"
             >
               <span class="sr-only">Open main menu</span>
-              <!--
-              Icon when menu is closed.
 
-              Heroicon name: outline/menu
-
-              Menu open: "hidden", Menu closed: "block"
-            -->
               <svg
                 class="block h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg"
@@ -47,13 +41,7 @@
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
-              <!--
-              Icon when menu is open.
 
-              Heroicon name: outline/x
-
-              Menu open: "block", Menu closed: "hidden"
-            -->
               <svg
                 class="hidden h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +72,6 @@
             />
           </div>
           <div class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <router-link
               :to="{ name: 'Home' }"
               class="
@@ -127,34 +114,6 @@
               "
               >Lucky number</router-link
             >
-
-            <!-- <a
-              href="#"
-              class="
-                text-gray-300
-                hover:bg-gray-700 hover:text-white
-                px-3
-                py-2
-                rounded-md
-                text-sm
-                font-medium
-              "
-              >Projects</a
-            > -->
-
-            <!-- <a
-              href="#"
-              class="
-                text-gray-300
-                hover:bg-gray-700 hover:text-white
-                px-3
-                py-2
-                rounded-md
-                text-sm
-                font-medium
-              "
-              >Calendar</a
-            > -->
           </div>
         </div>
         <div class="flex items-center">
@@ -212,10 +171,8 @@
       </div>
     </div>
 
-    <!-- Mobile menu, show/hide based on menu state. -->
     <div class="md:hidden" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         <router-link
           :to="{ name: 'Home' }"
           class="
@@ -261,36 +218,6 @@
           "
           >Lucky number</router-link
         >
-
-        <!-- <a
-          href="#"
-          class="
-            text-gray-300
-            hover:bg-gray-700 hover:text-white
-            block
-            px-3
-            py-2
-            rounded-md
-            text-base
-            font-medium
-          "
-          >Projects</a
-        > -->
-
-        <!-- <a
-          href="#"
-          class="
-            text-gray-300
-            hover:bg-gray-700 hover:text-white
-            block
-            px-3
-            py-2
-            rounded-md
-            text-base
-            font-medium
-          "
-          >Calendar</a
-        > -->
       </div>
     </div>
   </nav>
